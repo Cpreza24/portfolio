@@ -39,6 +39,11 @@ function App() {
       <div ref={contactRef} className='section'>
         <Contact />
       </div>
+      <button onClick={() => {
+        window.scrollTo({ top: 0, behavior: 'smooth' })
+      }}
+        className='scroll-to-top'
+      >↑ Top</button>
     </>
   )
 }
