@@ -1,14 +1,34 @@
-import React from 'react';
+import React, { useState } from 'react';
 import './Navbar.css';
 
 function Navbar({ scrollToProjects, scrollToContact, scrollToAbout }) {
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const handleNavClick = (scrollFunction) => {
+    scrollFunction();
+    setIsMenuOpen(false);
+  };
+
   return (
     <nav className="navbar">
-      <div className="navbar-left">
+      <div className="navbar-container">
         <h1 className="logo">Cesar Preza</h1>
-        <button onClick={scrollToAbout} className='nav-button'>About</button>
-        <button onClick={scrollToProjects} className="nav-button">Projects</button>
-        <button onClick={scrollToContact} className="nav-button">Contact</button>
+
+        <button className="hamburger" onClick={toggleMenu}>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+          <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
+        </button>
+
+        <div className={`nav-links ${isMenuOpen ? 'active' : ''}`}>
+          <button onClick={() => handleNavClick(scrollToAbout)} className='nav-button'>About</button>
+          <button onClick={() => handleNavClick(scrollToProjects)} className="nav-button">Projects</button>
+          <button onClick={() => handleNavClick(scrollToContact)} className="nav-button">Contact</button>
+        </div>
       </div>
     </nav>
   );
