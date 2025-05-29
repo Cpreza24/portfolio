@@ -12,13 +12,31 @@ function Projects() {
             key={index}
             className="project-card"
           >
-            <div className="project-image-container">
+            <h2 className="project-title">{project.title}</h2>
+            <a
+              href={project.liveLink}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="project-image-container"
+            >
               <img
                 src={project.image}
                 alt={project.title}
                 className="project-image"
               />
-              <div className="project-image-overlay"></div>
+              <div className="project-image-overlay">
+                View Live Site
+              </div>
+            </a>
+            <div className="project-links">
+              <a
+                href={project.codeLink}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="github-button"
+              >
+                Github Repo
+              </a>
             </div>
           </div>
         ))}
