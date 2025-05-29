@@ -21,7 +21,7 @@ const projects = [
         tech: ['React', 'Tailwind', 'MongoDB'],
         liveLink: 'https://snap-packs-47ffe00fbccd.herokuapp.com/',
         codeLink: 'https://github.com/Cpreza24/snap-packs',
-        image: '/images/snap-packs'
+        image: '/images/snap-packs.png'
     }
 ];
 

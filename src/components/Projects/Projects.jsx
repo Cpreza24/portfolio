@@ -1,14 +1,29 @@
 import React from 'react'
+import projects from '../../data/projects'
+import './Projects.css'
 
 function Projects() {
   return (
-    <div>
-      <h1>Projects</h1>
-      <p>Project 1</p>
-      <p>Project 2</p>
-      <p>Project 3</p>
-      <p>Project 4</p>
-    </div>
+    <section className="projects-section">
+      <h1 className="projects-title">Projects</h1>
+      <div className="projects-grid">
+        {projects.map((project, index) => (
+          <div
+            key={index}
+            className="project-card"
+          >
+            <div className="project-image-container">
+              <img
+                src={project.image}
+                alt={project.title}
+                className="project-image"
+              />
+              <div className="project-image-overlay"></div>
+            </div>
+          </div>
+        ))}
+      </div>
+    </section>
   )
 }
 
