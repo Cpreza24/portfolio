@@ -8,7 +8,7 @@ const projects = [
         image: '/images/junk.png'
     },
     {
-        title: 'Trivia Game App',
+        title: 'Trivia Game',
         description: 'A dynamic trivia game with randomized questions and a scoring system.',
         tech: ['JavaScript', 'HTML', 'CSS'],
         liveLink: 'https://cpreza24.github.io/word-challenge/',
