@@ -29,7 +29,7 @@ function Contact() {
         <h1 className="contact-title">Get In Touch</h1>
         <p className="contact-subtitle">
           I'm currently open to new opportunities and collaborations.
-          Whether you have a question or just want to say hi, I'll try my best to get back to you!
+          Whether you have a question or just want to say hi, I'll be sure to get back to you!
         </p>
 
         <div className="contact-content">
