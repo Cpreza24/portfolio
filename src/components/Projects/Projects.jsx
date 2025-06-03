@@ -25,7 +25,7 @@ function Projects() {
                 className="project-image"
               />
               <div className="project-image-overlay">
-                View Live Site
+                Visit Site
               </div>
             </a>
             <div className="project-links">
