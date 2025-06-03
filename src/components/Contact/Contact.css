@@ -95,20 +95,41 @@
     border-color: #64ffda;
 }
 
+.submit-container {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
 .submit-button {
-    padding: 0.75rem 1.5rem;
+    width: 150px;
+    padding: 0.5rem 1rem;
     background-color: transparent;
     border: 1px solid #64ffda;
     color: #64ffda;
     border-radius: 0.25rem;
-    font-size: 1rem;
+    font-size: 0.9rem;
     cursor: pointer;
     transition: all 0.3s ease;
-    align-self: flex-start;
+    white-space: nowrap;
 }
 
 .submit-button:hover {
     background-color: rgba(100, 255, 218, 0.1);
+}
+
+.show-message {
+    opacity: 0;
+    transform: translateY(10px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    color: #4CAF50;
+    font-weight: 500;
+    margin: 0;
+}
+
+.show-message.sent {
+    opacity: 1;
+    transform: translateY(0);
 }
 
 @media (max-width: 768px) {
@@ -121,7 +142,17 @@
         text-align: center;
     }
 
-    .submit-button {
-        align-self: center;
+    .submit-container {
+        flex-direction: column;
+        align-items: center;
+        gap: 0.5rem;
     }
+}
+
+.message-confirmation {
+    display: none;
+}
+
+.show-message-confirmation {
+    display: block;
 }

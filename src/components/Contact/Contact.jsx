@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Contact.css'
 
 function Contact() {
@@ -7,6 +7,18 @@ function Contact() {
     email: '',
     message: ''
   })
+
+  const [messageSent, setMessageSent] = useState(false);
+
+  useEffect(() => {
+    let timeout;
+    if (messageSent) {
+      timeout = setTimeout(() => {
+        setMessageSent(false);
+      }, 3000);
+    }
+    return () => clearTimeout(timeout);
+  }, [messageSent]);
 
   const handleChange = (e) => {
     setFormData({
@@ -20,7 +32,13 @@ function Contact() {
     // Here you would typically handle the form submission
     // For now, we'll just log the data
     console.log('Form submitted:', formData)
-    // You can add your email service integration here later
+    setFormData({
+      name: '',
+      email: '',
+      message: ''
+    });
+
+    setMessageSent(true);
   }
 
   return (
@@ -84,6 +102,9 @@ function Contact() {
             <button type="submit" className="submit-button">
               Send Message
             </button>
+            {messageSent && (
+              <p className="show-message sent">Message Sent ✔</p>
+            )}
           </form>
         </div>
       </div>
