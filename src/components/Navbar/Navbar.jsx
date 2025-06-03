@@ -16,7 +16,7 @@ function Navbar({ scrollToProjects, scrollToContact, scrollToAbout }) {
   return (
     <nav className="navbar">
       <div className="navbar-container">
-        <h1 className="logo">Cesar Preza</h1>
+        <img src="/images/logo.png" alt="CP Logo" className="about-logo" />
 
         <button className="hamburger" onClick={toggleMenu}>
           <span className={`hamburger-line ${isMenuOpen ? 'open' : ''}`}></span>
