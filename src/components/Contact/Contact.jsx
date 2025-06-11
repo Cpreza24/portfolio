@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import emailjs from '@emailjs/browser'
 import './Contact.css'
 
 function Contact() {
@@ -27,18 +28,32 @@ function Contact() {
     })
   }
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
-    // Here you would typically handle the form submission
-    // For now, we'll just log the data
-    console.log('Form submitted:', formData)
-    setFormData({
-      name: '',
-      email: '',
-      message: ''
-    });
 
-    setMessageSent(true);
+    try {
+      await emailjs.send(
+        'service_qew7z7f', // Replace with your EmailJS service ID
+        'template_t9893xd', // Replace with your EmailJS template ID
+        {
+          from_name: formData.name,
+          from_email: formData.email,
+          message: formData.message,
+        },
+        'nlEcsr6sTB2vWFrc0' // Replace with your EmailJS public key
+      );
+
+      setFormData({
+        name: '',
+        email: '',
+        message: ''
+      });
+
+      setMessageSent(true);
+    } catch (error) {
+      console.error('Failed to send email:', error);
+      // You might want to show an error message to the user here
+    }
   }
 
   return (
