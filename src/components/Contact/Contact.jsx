@@ -10,16 +10,18 @@ function Contact() {
   })
 
   const [messageSent, setMessageSent] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   useEffect(() => {
     let timeout;
-    if (messageSent) {
+    if (messageSent || errorMessage) {
       timeout = setTimeout(() => {
         setMessageSent(false);
+        setErrorMessage('');
       }, 3000);
     }
     return () => clearTimeout(timeout);
-  }, [messageSent]);
+  }, [messageSent, errorMessage]);
 
   const handleChange = (e) => {
     setFormData({
@@ -33,14 +35,15 @@ function Contact() {
 
     try {
       await emailjs.send(
-        'service_qew7z7f', // Replace with your EmailJS service ID
-        'template_t9893xd', // Replace with your EmailJS template ID
+        'service_0n987ad',
+        'template_q7c02rd',
         {
-          from_name: formData.name,
-          from_email: formData.email,
+          name: formData.name,
+          from: formData.email,
           message: formData.message,
+          reply_to: formData.email
         },
-        'nlEcsr6sTB2vWFrc0' // Replace with your EmailJS public key
+        'nlEcsr6sTB2vWFrc0'
       );
 
       setFormData({
@@ -50,9 +53,16 @@ function Contact() {
       });
 
       setMessageSent(true);
+      setErrorMessage('');
     } catch (error) {
       console.error('Failed to send email:', error);
-      // You might want to show an error message to the user here
+      console.log('Error details:', {
+        serviceID: 'service_0n987ad',
+        templateID: 'template_q7c02rd',
+        formData: formData
+      });
+      setErrorMessage('Failed to send message. Please try again.');
+      setMessageSent(false);
     }
   }
 
@@ -114,12 +124,17 @@ function Contact() {
               ></textarea>
             </div>
 
-            <button type="submit" className="submit-button">
-              Send Message
-            </button>
-            {messageSent && (
-              <p className="show-message sent">Message Sent ✔</p>
-            )}
+            <div className="submit-container">
+              <button type="submit" className="submit-button">
+                Send Message
+              </button>
+              {messageSent && (
+                <p className="show-message sent">Message Sent Successfully! ✔</p>
+              )}
+              {errorMessage && (
+                <p className="show-message error">{errorMessage}</p>
+              )}
+            </div>
           </form>
         </div>
       </div>

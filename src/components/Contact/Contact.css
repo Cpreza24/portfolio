@@ -132,6 +132,12 @@
     transform: translateY(0);
 }
 
+.show-message.error {
+    opacity: 1;
+    transform: translateY(0);
+    color: #f44336;
+}
+
 @media (max-width: 768px) {
     .contact-content {
         grid-template-columns: 1fr;
