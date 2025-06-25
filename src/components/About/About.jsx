@@ -32,7 +32,7 @@ function About() {
           </div>
           <div className="about-image-container">
             <img
-              src="/images/github_selfie.jpg"
+              src="/images/profile_pic.png"
               alt="Cesar Preza"
               className="about-image"
             />
